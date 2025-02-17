@@ -1,55 +1,213 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>Ethan Snyder</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Ethan"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Responsive Personal Portfolio Website </title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
 
-    <body>
-        <!--START SECTION: NAVIGATION BAR-->
-        <div id="top" class="navigation">
-            <div class="navigation_wrapper wrapper--large">
-                <a class="navigation_logo log" href="#0">ES</a> <!--PLACEHOLDER REPLACE LATER-->
-                <nav class="navigation_container">
-                    <ul class="navigation_list">
-                        <li><a href="#0">Home</a></li>
-                        <li><a href="#portfolio">Portfolio</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#personal">Contact</a></li>
-                    </ul>
-                </nav>
+</head>
+<body>
 
-                <div class="navigation__burger">
-                    <span class="navigation__burger-el navigation__burger-el--top"></span>
-                    <span class="navigation__burger-el navigation__burger-el--middle"></span>
-                    <span class="navigation__burger-el navigation__burger-el--bottom"></span>
-                </div>
+<div class="scrollToTop-btn">
+    <i class="fas fa-angle-up"></i>
+</div>
 
-                <!-- SECTION: Intro -->
-	            <header class="header">
-		            <div class="introduction">
-			            <h1 class="introduction__content">
-				            <span class="introduction__content-el introduction__content-el--name">Ethan Snyder</span>
-				            <span class="introduction__content-el introduction__content-el--job">UX Designer</span>
-			            </h1>
-                        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M11 21.883l-6.235-7.527-.765.644 7.521 9 7.479-9-.764-.645-6.236 7.529v-21.884h-1v21.883z"/></svg>
-		            </div>
-	            </header>
-	            <!-- END SECTION: Intro -->
-                <!-- SECTION: About -->
-                <section class="about">
-                    <div class="about__wrapper wrapper--small">
-                        <div class="about__content">
-                            <!--COME BACK HERE LATER!!!!!!!!!!-->
-                            <div class="about__content-blurb blurb blurb--framed">
-                                <h2 class="blurb__heading">Ideation, Creation, Design.</h2>
-                            </div>
-                        </div>
-                        <img class="headshot" src="head_shot.jpg" alt="Ethan Snyder">
-                    </div>
-                </section>
-                <!-- END SECTION: About -->
+<header>
+    <a href="#" class="brand">Ethan</a>
+    <div class="menu-btn"></div>
+    <div class="navigation">
+        <a href="#main">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">My Projects</a>
+        <a href="#contact">Contact</a>
+    </div>
+</header>
+
+<section class="main" id="main">
+    <div class="content">
+        <h2>Hi, I'm<br><span>Ethan</span></h2>
+        <div class="animated-text">
+            <h3>Student</h3>
+            <h3>IT Professional</h3>
+            <h3>Cybersecurity</h3>
+            <h3>Web Development</h3>
+
+        </div>
+        <a href="https://github.com/ethan-snyder" class="btn">Click here to see my work</a>
+        <div class="media-icons">
+            <a href="https://www.linkedin.com/in/ethan-snyder-a855b124a/"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </div>
+</section>
+
+<section class="about" id="about">
+    <div class="title reveal">
+        <h2 class="section-title">About Me</h2>
+    </div>
+    <div class="content">
+        <div class="column col-left reveal">
+            <div class="img-card">
+                <img class="hexagonal-image" src="images/head_shot.jpg" alt="Head Shot">
             </div>
         </div>
-    </body>
+        <div class="column col-right reveal">
+            <h2 class="content-title">Hey! I'm Ethan Snyder</h2>
+            <p class="paragraph-text"> I am a Human Computer Interaction Student with a minor in Security
+            & Risk Analytics at Penn State. In addition to what I do inside the classroom at Penn State,
+            I have learned a great deal of cybersecurity both by self study and from engaging in CTFs and
+            cybersecurity club meetings. I hope to get my CompTIA Sec+ soon. I love to cook, travel and
+            hike!</p>
+        </div>
+    </div>
+</section>
+
+<section class="skills" id="skills">
+    <div class="title reveal">
+        <h2 class="section-title">Skills</h2>
+    </div>
+    <div class="content">
+        <div class="column col-left reveal">
+            <h2 class="content-title">My Skills and Experience</h2>
+            <p> I am a senior studying to get my Bachelor's degree in Human Centered Design & Development
+                with a minor in Security & Risk Analytics at Penn State with a focus in Cybersecurity. I am
+                dedicated, energetic, and always ready to learn new things. This summer I will be interning
+                at PNC as an IT Intern.
+            </p>
+        </div>
+        <div class="column col-right reveal">
+            <div class="bar">
+                <div class="info">
+                    <span>HTML,CSS,Javascript</span>
+                </div>
+                <div class="line html"></div>
+            </div>
+            <div class="bar">
+                <div class="info">
+                    <span>Python</span>
+                </div>
+                <div class="line css"></div>
+            </div>
+            <div class="bar">
+                <div class="info">
+                    <span>Web Exploitation</span>
+                </div>
+                <div class="line javascript"></div>
+            </div>
+            <div class="bar">
+                <div class="info">
+                    <span>Java</span>
+                </div>
+                <div class="line jquery"></div>
+            </div>
+            <div class="bar">
+                <div class="info">
+                    <span>UI/UX designing</span>
+                </div>
+                <div class="line ux"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- teams section start -->
+
+
+
+<section class="projects" id="projects">
+    <div class="max-width">
+        <h2 class="proj">My Projects</h2>
+        <div class="carousel owl-carousel">
+            <div class="card">
+                <div class="box">
+                    <img src="images/placeholder-image.jpg" alt="">
+                    <div class="text"><u>Vulnerability Search</u> </div>
+                    <p> A working prototype using Python to query vulnerabilities from the National
+                        Vulnerability database.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="box">
+                    <img src="images/placeholder-image.jpg" alt="">
+                    <div class="text"><u>Web Storefront Team Project</u> </div>
+                    <p> A group project for an Introduction to Web Development with a group using HTML, CSS,
+                    JavaScript, and C#.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="box">
+                    <img src="images/placeholder-image.jpg" alt="">
+                    <div class="text"><u>Web Storefront Solo</u> </div>
+                    <p>A continuation of the previous class, Intro to Web Development, a final project was
+                        created to showcase skills learned in the course.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+<section class="contact" id="contact">
+    <div class="title reveal">
+        <h2 class="section-title">Contact Me</h2>
+    </div>
+    <div class="content">
+        <div class="row">
+            <div class="card reveal">
+                <div class="contact-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="info">
+                    <h3>Address</h3>
+                    <span>Chennai,India</span>
+                </div>
+            </div>
+            <div class="card reveal">
+                <div class="contact-icon">
+                    <i class="fas fa-phone"></i>
+                </div>
+                <div class="info">
+                    <h3>Phone</h3>
+                    <span>+91 960066640</span>
+                </div>
+            </div>
+            <div class="card reveal">
+                <div class="contact-icon">
+                    <i class="fas fa-envelope"></i>
+                </div>
+                <div class="info">
+                    <h3>Email Address</h3>
+                    <span>yayady1999@gmail.com</span>
+                </div>
+            </div>
+            <div class="card reveal">
+                <div class="contact-icon">
+                    <i class="fab fa-linkedin-in"></i>
+                </div>
+                <div class="info">
+                    <h3>LinkedIn</h3>
+                    <span>www.linkedin.com/in/yayady/</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <span class="footer-title">YAYADY </span>
+    <p>This is my Digital portfolio @2021. All Rights Reserved.</p>
+</footer>
+
+<script src="script.js" charset="utf-8"></script>
+
+</body>
 </html>

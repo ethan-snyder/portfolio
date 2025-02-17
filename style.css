@@ -1,0 +1,7 @@
+.hexagonal-image {
+    width: 100px; /* Set the width */
+    height: 86.6px; /* Set the height to maintain aspect ratio for a hexagon */
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+}
+
+
