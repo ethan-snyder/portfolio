@@ -1,7 +1,44 @@
+
 .hexagonal-image {
     width: 100px; /* Set the width */
     height: 86.6px; /* Set the height to maintain aspect ratio for a hexagon */
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 }
 
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'DM Sans';
+    scroll-behavior: smooth;
+}
 
+body {
+    font-family: 'DM Sans';
+}
+
+section{
+    padding: 100px 200px;
+}
+
+.main {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.content {
+    z-index: 1; /* Ensure content is on top of the video */
+}
