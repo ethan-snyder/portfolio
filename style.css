@@ -159,27 +159,42 @@ section{
     }
 }
 
-header .navigation{
+header .navigation {
     position: relative;
 }
 
-header .navigation a{
+header .navigation a {
     color: #fff;
     font-size: 1em;
     font-weight: 500;
     text-decoration: none;
     margin-left: 30px;
+    padding: 15px 15px;
+    display: inline-block;
+    line-height: 1em;
+    vertical-align: middle;
+    border-radius: 5px;
+    transition: color 0.3s, transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
-header .navigation a:hover{
+header .navigation a:hover {
     color: #ffc003;
+    background-color: black;
+    transform: scale(1.1);
 }
 
-header.sticky .navigation a:hover{
+header.sticky .navigation a {
     color: #000;
+    transition: color 0.3s, transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+    padding: 10px 15px;
 }
 
-header{
+header.sticky .navigation a:hover {
+    color: #fff;
+    background-color: black;
+}
+
+header {
     z-index: 999;
     position: fixed;
     background: rgba(255, 255, 255, 0.1);
@@ -193,17 +208,20 @@ header{
     transition: 0.5s ease;
 }
 
-header.sticky{
+header.sticky {
     background: #ffc003;
     padding: 10px 200px;
 }
 
-header .brand{
+header .brand {
     color: #fff;
     font-size: 1.8em;
     font-weight: 700;
     text-transform: uppercase;
     text-decoration: none;
+    transition: color 0.3s, transform 0.3s ease-in-out;
 }
 
-
+header.sticky .brand {
+    color: black;
+}
