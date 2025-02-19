@@ -11,11 +11,6 @@
 </head>
 
 <body>
-<!-- Scroll to Top Button -->
-<div class="scrollToTop-btn">
-    <i class="fas fa-angle-up"></i>
-</div>
-
 <!-- Header Section -->
 <header>
     <a href="#" class="brand">Ethan</a>
@@ -182,6 +177,13 @@
         </div>
     </div>
 </section>
+
+<script>
+    window.addEventListener("scroll", function(){
+        const header = document.querySelector("header");
+        header.classList.toggle('sticky', window.scrollY > 0);
+    });
+</script>
 
 </body>
 </html>
