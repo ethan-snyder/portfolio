@@ -1,8 +1,9 @@
 .circle-image {
     border-radius: 50%;
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 400px;
     overflow: hidden;
+    border: 10px solid #ffc003;
 }
 *{
     margin: 0;
@@ -53,7 +54,7 @@ section{
 }
 
 .content {
-    z-index: 1; /* Ensure content is on top of the video */
+    z-index: 1;
 }
 
 .box1 {
@@ -83,7 +84,7 @@ section{
 }
 
 .column.col-right {
-    flex: 1; /* Ensure the text takes up the remaining space */
+    flex: 1;
 }
 
 h2 {
@@ -224,4 +225,24 @@ header .brand {
 
 header.sticky .brand {
     color: black;
+}
+
+.about {
+    position: relative;
+    background-color: black;
+    color: #ffc003;
+    padding-left: 300px;
+    padding-right: 300px;
+}
+
+.about::after {
+    content: '';
+    position: absolute;
+    bottom: 500px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    border-radius: 4px;
+    height: 5px;
+    background-color: #ffc003;
 }
