@@ -1,6 +1,6 @@
 .circle-image {
     border-radius: 50%;
-        width: 300px;
+    width: 300px;
     height: 300px;
     overflow: hidden;
 }
@@ -28,17 +28,14 @@ section{
     align-items: center;
 }
 
-.main .content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+.main .content{
+    max-width: 800px;
 }
 
-.main .content h2 {
-    font-size: 75px;
+.main .content h2{
+    color: black;
+    font-size: 50px;
     font-weight: 500;
-    margin-bottom: 10px;
 }
 
 .main .content h2 span{
@@ -64,11 +61,17 @@ section{
     color: black;
     opacity: 0.75;
     border-radius: 10px;
-    padding: 10px;
+    padding: 20px 20px 20px;
     width: 600px;
-    height: 300px;
+    height: auto;
 }
 
+.box1 .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
 
 .content {
     display: flex;
@@ -86,6 +89,7 @@ section{
 h2 {
     text-align: center;
     font-size: 40px;
+    padding-bottom: 20px;
 }
 
 section{
@@ -131,21 +135,27 @@ section{
 .media-icons {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
-    max-width: 100%; /* Ensures it doesn't exceed box width */
+    margin-top: 10px;
 }
 
 .media-icons a {
-    -moz-transition: all .2s ease-in;
-    -o-transition: all .2s ease-in;
-    -webkit-transition: all .2s ease-in;
-    color: black;
     margin: 10px;
     font-size: 50px;
-    transition: transform 0.3s ease-in-out;
+    color: black;
+    transition: color 0.3s, transform 0.3s ease-in-out;
 }
 
 .media-icons a:hover {
-    transform: scale(1.2);
     color: white;
+    transform: scale(1.2);
 }
+
+
+
+@media (max-width: 768px) {
+    .media-icons a {
+        font-size: 20px;
+        margin: 5px;
+    }
+}
+
