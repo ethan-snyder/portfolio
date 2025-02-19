@@ -80,7 +80,7 @@ section{
 }
 
 .column.col-left {
-    margin-right: 20px; /* Add some space between the image and text */
+    margin-right: 20px;
 }
 
 .column.col-right {
@@ -245,4 +245,83 @@ header.sticky .brand {
     border-radius: 4px;
     height: 5px;
     background-color: #ffc003;
+}
+
+.skills {
+    padding: 75px 150px;
+}
+
+.skills h2 {
+    text-align: center;
+    font-size: 40px;
+    padding-bottom: 20px;
+}
+
+.skills-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.coding-languages,
+.other-skills {
+    width: 45%;
+    margin-bottom: 20px;
+}
+
+.coding-languages h3,
+.other-skills h3 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: black;
+}
+
+.skills-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.skill-card {
+    background-color: #ffc003;
+    color: black;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin: 5px;
+    text-align: center;
+    font-size: 16px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.skill-card:hover {
+    transform: scale(1.1);
+}
+
+/* Add this CSS to change the logo color to yellow */
+.skill-logo {
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(282deg) brightness(102%) contrast(101%);
+    transition: color 0.3s, transform 0.3s ease-in-out;
+}
+
+.skill-logo:hover {
+    filter: none; /* Revert to original */
+    transform: scale(1.2);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .skills {
+        padding: 50px 20px;
+    }
+
+    .skills-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .coding-languages,
+    .other-skills {
+        width: 90%;
+    }
 }
