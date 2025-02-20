@@ -3,7 +3,7 @@
     width: 400px;
     height: 400px;
     overflow: hidden;
-    border: 10px solid #ffc003;
+    border: 10px solid black;
 }
 *{
     margin: 0;
@@ -229,8 +229,8 @@ header.sticky .brand {
 
 .about {
     position: relative;
-    background-color: black;
-    color: #ffc003;
+    background-color: #ffc003;
+    color: black;
     padding-left: 300px;
     padding-right: 300px;
 }
@@ -249,13 +249,14 @@ header.sticky .brand {
 
 .skills {
     padding: 75px 150px;
-    background-color: #ffc003;
+    background-color: black;
 }
 
 .skills h2 {
     text-align: center;
     font-size: 40px;
     padding-bottom: 20px;
+    color: #ffc003;
 }
 
 .skills-container {
@@ -275,7 +276,7 @@ header.sticky .brand {
     text-align: center;
     font-size: 30px;
     margin-bottom: 10px;
-    color: black;
+    color: #ffc003;
 }
 
 .skills-cards {
@@ -285,8 +286,8 @@ header.sticky .brand {
 }
 
 .skill-card {
-    background-color: black;
-    color: #ffc003;
+    background-color: #ffc003;
+    color: black;
     border-radius: 10px;
     padding: 10px 20px;
     margin: 5px;
@@ -323,4 +324,42 @@ h4 {
     .other-skills {
         width: 90%;
     }
+}
+
+.skill-card::before{
+    content: "";
+    background: linear-gradient(
+            45deg,
+            #ffc003, #ffcc03, #ffb003, #ff9903, #ff7f03, #ff6603
+    );
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 600%;
+    z-index: -1;
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    filter: blur(8px);
+    animation: glowing 20s linear infinite;
+    transition: opacity .3s  ease-in-out;
+    border-radius: 10px;
+    opacity: 0;
+}
+
+@keyframes glowing {
+    0% {background-position: 0 0;}
+    50% {background-position: 400% 0;}
+    100% {background-position: 0 0;}
+}
+
+.skill-card:hover::before{
+    opacity: 1;
+}
+
+.skill-card:active:after{
+    background: transparent;
+}
+.skill-card:active{
+    color: #000;
+    font-weight: bold;
 }
