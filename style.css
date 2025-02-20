@@ -249,6 +249,7 @@ header.sticky .brand {
 
 .skills {
     padding: 75px 150px;
+    background-color: #ffc003;
 }
 
 .skills h2 {
@@ -272,7 +273,7 @@ header.sticky .brand {
 .coding-languages h3,
 .other-skills h3 {
     text-align: center;
-    font-size: 24px;
+    font-size: 30px;
     margin-bottom: 10px;
     color: black;
 }
@@ -284,25 +285,23 @@ header.sticky .brand {
 }
 
 .skill-card {
-    background-color: #ffc003;
-    color: black;
+    background-color: black;
+    color: #ffc003;
     border-radius: 10px;
     padding: 10px 20px;
     margin: 5px;
     text-align: center;
-    font-size: 16px;
+    font-size: 24px;
     transition: transform 0.3s ease-in-out;
 }
 
+h4 {
+    padding-bottom: 10px;
+}
 .skill-card:hover {
     transform: scale(1.1);
 }
 
-/* Add this CSS to change the logo color to yellow */
-.skill-logo {
-    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(282deg) brightness(102%) contrast(101%);
-    transition: color 0.3s, transform 0.3s ease-in-out;
-}
 
 .skill-logo:hover {
     filter: none; /* Revert to original */
