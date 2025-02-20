@@ -218,12 +218,6 @@ header.sticky .navigation a:hover {
     flex-wrap: wrap;
 }
 
-.coding-languages,
-.other-skills {
-    width: 45%;
-    margin-bottom: 20px;
-}
-
 .coding-languages h3,
 .other-skills h3 {
     text-align: center;
@@ -236,6 +230,7 @@ header.sticky .navigation a:hover {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+
 }
 
 .skill-card {
@@ -243,7 +238,7 @@ header.sticky .navigation a:hover {
     color: black;
     border-radius: 10px;
     padding: 10px 20px;
-    margin: 5px;
+    margin: 20px;
     text-align: center;
     font-size: 24px;
     transition: transform 0.3s ease-in-out;
@@ -253,7 +248,7 @@ header.sticky .navigation a:hover {
 
 .skill-card:hover {
     transform: scale(1.1);
-    box-shadow: 0 5px 15px #ffc003;
+    box-shadow: 0 1px 20px #ffc003;
     background-color: #ffcc03;
     transition: transform 0.3s ease-in-out;
 }
@@ -291,3 +286,5 @@ h4 {
         width: 90%;
     }
 }
+
+
