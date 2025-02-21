@@ -303,9 +303,13 @@ h4 {
 .text{
     color: #ffcc03;
 }
+
 .proj-description{
     color: #ffc003;
 }
+
+
+
 .proj {
     position: relative;
     color: black;
@@ -339,10 +343,6 @@ h4 {
 }
 
 
-.projects .carousel .card:hover{
-    background: rgb(38, 3, 99);
-    color: #ffcc03;
-}
 .projects .carousel .card .box{
     display: flex;
     flex-direction: column;
@@ -350,8 +350,22 @@ h4 {
     justify-content: center;
     transition: all 0.3s ease;
 }
+
+.projects .carousel .card:hover{
+    background: #ffc003;
+    transform: scale(1.1);
+    box-shadow: 0 1px 40px black;
+    transition: transform 0.5s ease-in-out;
+}
+
 .projects .carousel .card:hover .box{
     transform: scale(1.05);
+    u{
+        color:black;
+    }
+    p{
+        color: black;
+    }
 }
 .projects .carousel .card .text{
     font-size: 25px;
@@ -359,13 +373,20 @@ h4 {
     margin: 10px 0 7px 0;
 }
 .projects .carousel .card img{
-    height: 150px;
-    width: 150px;
+    height: 200px;
+    width: 200px;
     object-fit: cover;
     border-radius: 50%;
-    border: 5px solid crimson;
+    border: 5px solid #ffc003;
     transition: all 0.3s ease;
 }
 .projects .carousel .card:hover img{
-    border-color: #fff;
+    border-color: black;
 }
+
+a2{
+    background-color: black;
+    color: #ffc003;
+}
+
+
