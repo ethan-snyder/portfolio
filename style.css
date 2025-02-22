@@ -515,7 +515,8 @@ h4 {
 }
 
 a:link {
-    color: black;
+    color: #ffcc03;
     background-color: transparent;
     text-decoration: none;
 }
+
