@@ -199,6 +199,7 @@
                 <div class="info">
                     <h3>Email Address</h3>
                     <span>ems7100@psu.edu</span>
+                    <button class="copyButton" onclick="copyEmail()"><img src="https://www.svgrepo.com/show/3110/copy.svg" width="20px" height="20px"></button>
                 </div>
             </div>
             <div class="card reveal">
@@ -207,7 +208,9 @@
                 </div>
                 <div class="info">
                     <h3>LinkedIn</h3>
-                    <span>https://www.linkedin.com/in/ethan-snyder-a855b124a/</span>
+                    <a href="https://www.linkedin.com/in/ethan-snyder-a855b124a/">
+                        <span id="linked-in-bottom">https://www.linkedin.com/in/ethan-snyder-a855b124a/</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -219,6 +222,10 @@
         const header = document.querySelector("header");
         header.classList.toggle('sticky', window.scrollY > 0);
     });
+
+    function copyEmail(){
+        navigator.clipboard.writeText("ems7100@psu.edu");
+    }
 </script>
 
 </body>

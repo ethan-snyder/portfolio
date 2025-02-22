@@ -507,3 +507,15 @@ h4 {
 #contact-title {
     color: #ffc003;
 }
+
+.copyButton {
+    color: black;
+    background-color: #ffcc03;
+    border-color: #ffcc03;
+}
+
+a:link {
+    color: black;
+    background-color: transparent;
+    text-decoration: none;
+}
