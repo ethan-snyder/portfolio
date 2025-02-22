@@ -255,11 +255,10 @@ header.sticky .navigation a:hover {
 
 .skill-card:hover {
     transform: scale(1.1);
-    box-shadow: 0 1px 20px #ffc003;
-    background-color: #ffcc03;
+    box-shadow: 0 1px 20px #FFA300;
+    background-color: #FEDD00;
     transition: transform 0.3s ease-in-out;
 }
-
 
 h4 {
     padding-bottom: 10px;
@@ -359,7 +358,7 @@ h4 {
 }
 
 .projects .carousel .card:hover{
-    background: #ffc003;
+    background: #FEDD00;
     transform: scale(1.1);
     box-shadow: 0 1px 40px black;
     transition: transform 0.5s ease-in-out;
@@ -452,7 +451,7 @@ h4 {
 }
 
 .contact-form{
-    background: #fff;
+    background: black;
     max-width: 600px;
     margin-top: 50px;
     padding: 50px;
@@ -488,8 +487,8 @@ h4 {
 }
 
 .contact-form .input-box .send-btn{
-    color: #fff;
-    background: #3a6cf4;
+    color: black;
+    background: #ffc003;
     display: inline-block;
     font-size: 1.1em;
     font-weight: 500;
@@ -502,11 +501,9 @@ h4 {
 }
 
 .contact-form .input-box .send-btn:hover{
-    background: #235bf6;
+    background: #ffc003;
 }
 
 #contact-title {
     color: #ffc003;
 }
-
-
