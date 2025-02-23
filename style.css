@@ -119,7 +119,7 @@ h2 {
 }
 
 .media-icons a:hover {
-    color: white;
+    color: #FEDD00;
     transform: scale(1.2);
 }
 
@@ -187,6 +187,7 @@ header.sticky .navigation a:hover {
 
 .about {
     position: relative;
+    z-index: 1;
     background-color: #ffc003;
     color: black;
     padding: 75px 300px;
@@ -197,6 +198,15 @@ header.sticky .navigation a:hover {
     top: 0px; /* Adjust as needed */
     left: 0px; /* Adjust as needed */
     z-index: 10; /* Ensure it's above other content */
+}
+
+.paragraph-text{
+    margin-bottom: 1.5rem;
+}
+
+.resume-link{
+    color: black;
+    z-index: 2;
 }
 
 .about::after {
