@@ -217,6 +217,20 @@ header.sticky .navigation a:hover {
 
 .skills h2 {
     color: #ffc003;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.skills h2::after {
+    content: '';
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 5px;
+    background-color: #ffc003;
+    border-radius: 5px;
 }
 
 .skills-container {
@@ -303,6 +317,8 @@ h4 {
     display:flex ;
     justify-content: center;
     align-items: center;
+    height: 5px;
+    border-radius: 5px;
     flex-direction: column;
     content: "  projects   ";
 }
@@ -394,6 +410,24 @@ h4 {
     background-color: black;
 }
 
+.contact h2{
+    color: #ffc003;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.contact h2::after {
+    content: '';
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250px;
+    height: 5px;
+    background-color: #ffc003;
+    border-radius: 5px;
+}
+
 .contact .content{
     display: flex;
     justify-content: center;
@@ -457,51 +491,6 @@ h4 {
     padding: 50px;
     border-radius: 10px;
     box-shadow: 0 5px 25px rgba(1 1 1 / 15%);
-}
-
-.contact-form h3{
-    color: #111;
-    font-size: 1.6em;
-    font-weight: 600;
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.contact-form .input-box{
-    position: relative;
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-.contact-form .input-box input,
-.contact-form .input-box textarea{
-    color: #111;
-    width: 100%;
-    padding: 10px;
-    font-size: 1em;
-    font-weight: 400;
-    outline: none;
-    border: 1px solid #111;
-    border-radius: 5px;
-    resize: none;
-}
-
-.contact-form .input-box .send-btn{
-    color: black;
-    background: #ffc003;
-    display: inline-block;
-    font-size: 1.1em;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    width: 100%;
-    border: none;
-    cursor: pointer;
-    transition: 0.5s ease;
-}
-
-.contact-form .input-box .send-btn:hover{
-    background: #ffc003;
 }
 
 #contact-title {
