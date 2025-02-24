@@ -195,9 +195,9 @@ header.sticky .navigation a:hover {
 
 .about a2 {
     position: absolute;
-    top: 0px; /* Adjust as needed */
-    left: 0px; /* Adjust as needed */
-    z-index: 10; /* Ensure it's above other content */
+    top: 0px;
+    left: 0px;
+    z-index: 10;
 }
 
 .paragraph-text{
