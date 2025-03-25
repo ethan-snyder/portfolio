@@ -212,7 +212,7 @@ header.sticky .navigation a:hover {
 .about::after {
     content: '';
     position: absolute;
-    bottom: 620px;
+    bottom: 600px;
     left: 50%;
     transform: translateX(-50%);
     width: 200px;
