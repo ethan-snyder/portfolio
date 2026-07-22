@@ -74,7 +74,7 @@ const PROJECTS = [
     },
     {
         title: 'Caishen 财神',
-        img: 'images/mySite.png',
+        img: 'images/fu.png',
         href: 'https://github.com/ethan-snyder/portfolio',
         description: 'This portfolio website was a great way to practice web development while implementing a sleek user interface.',
     },
@@ -94,8 +94,26 @@ const EXPERIENCE = [
         dates: 'Feb 2026 \u2014 Present',
         duration: '6 months',
         location: 'Pittsburgh, PA \u00B7 On-site',
-        bullets: [
-            'Digital Workplace: Designed custom agents, encouraged agentic AI adoption through internal Viva Engage'
+        bullets: [],
+        rotations: [
+            {
+                title: 'Digital Workplace',
+                dates: 'Feb 2026 \u2014 Jun 2026',
+                bullets: [
+                    'Led working sessions to support development of custom agents and facilitate executive-level discussions on agent strategy',
+                    'Hosted booth events and conducted Microsoft Teams trainings to educate users on effective Copilot usage',
+                    'Drove internal engagement through Viva Engage campaigns, generating 70,000+ interactions',
+                ],
+            },
+            {
+                title: 'Security Intelligence Group (SIG)',
+                dates: 'Jun 2026 \u2014 Aug 2026',
+                bullets: [
+                    'Reorganized PowerApps initiatives to improve data integrity and ensure uniqueness across key records',
+                    'Built a web crawler to identify and download source code from endpoints associated with malicious phishing sites',
+                    'Developed Python scripts to aggregate data from open-source and private APIs into a threat intelligence dashboard',
+                ],
+            },
         ],
     },
     {
@@ -374,11 +392,33 @@ function Reveal({ tag = 'div', className = '', children }) {
 function Header() {
     const [sticky, setSticky] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
+    const [activeSection, setActiveSection] = useState('#main');
 
     useEffect(() => {
         const onScroll = () => setSticky(window.scrollY > 10);
         window.addEventListener('scroll', onScroll);
         return () => window.removeEventListener('scroll', onScroll);
+    }, []);
+
+    useEffect(() => {
+        const sections = NAV_LINKS
+            .map((link) => document.querySelector(link.href))
+            .filter(Boolean);
+        if (!sections.length) return;
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setActiveSection(`#${entry.target.id}`);
+                    }
+                });
+            },
+            { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
+        );
+
+        sections.forEach((section) => observer.observe(section));
+        return () => observer.disconnect();
     }, []);
 
     return h(
@@ -409,7 +449,7 @@ function Header() {
                     {
                         key: link.href,
                         href: link.href,
-                        className: 'nav-link',
+                        className: `nav-link ${activeSection === link.href ? 'active' : ''}`,
                         onClick: () => setMenuOpen(false),
                     },
                     h('span', { className: 'num' }, link.num),
@@ -757,10 +797,29 @@ function ExperienceItem({ job }) {
                 h('span', { className: 'experience-company' }, job.company, ' \u00B7 ', job.type),
                 h('span', { className: 'experience-location' }, job.location)
             ),
-            job.bullets.length > 0 && h(
+            job.bullets && job.bullets.length > 0 && h(
                 'ul',
                 { className: 'experience-bullets' },
                 job.bullets.map((b, i) => h('li', { key: i }, b))
+            ),
+            job.rotations && job.rotations.length > 0 && h(
+                'div',
+                { className: 'experience-rotations' },
+                job.rotations.map((rot) => h(
+                    'div',
+                    { className: 'experience-rotation', key: rot.title },
+                    h(
+                        'div',
+                        { className: 'experience-rotation-top' },
+                        h('h5', null, rot.title),
+                        h('span', { className: 'experience-rotation-dates' }, rot.dates)
+                    ),
+                    h(
+                        'ul',
+                        { className: 'experience-bullets' },
+                        rot.bullets.map((b, i) => h('li', { key: i }, b))
+                    )
+                ))
             )
         )
     );
@@ -780,13 +839,25 @@ function Experience() {
 }
 
 function ProjectCard({ project }) {
+    const { ref, style, tilting, onMouseMove, onMouseEnter, onMouseLeave } = useTilt(4);
     return h(
-        TiltCard,
-        { as: 'a', href: project.href, className: 'project-card', maxTilt: 6, target: '_blank', rel: 'noopener noreferrer' },
+        'a',
+        {
+            ref,
+            href: project.href,
+            target: '_blank',
+            rel: 'noopener noreferrer',
+            className: `project-card ${tilting ? 'tilting' : ''}`,
+            style,
+            onMouseMove,
+            onMouseEnter,
+            onMouseLeave,
+        },
         h(
             'div',
             { className: 'project-img-wrap' },
-            h('img', { src: project.img, alt: project.title })
+            h('img', { src: project.img, alt: project.title }),
+            h('span', { className: 'project-img-glare', 'aria-hidden': 'true' })
         ),
         h(
             'div',
