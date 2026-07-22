@@ -68,7 +68,7 @@ const SKILL_GROUPS = [
 const PROJECTS = [
     {
         title: 'shadowGen',
-        img: 'images/shadowGen.jfif',
+        img: 'images/shadowGen.png',
         href: 'https://github.com/ethan-snyder/shadowGen',
         description: 'A Python-based utility for generating Linux /etc/shadow format password hashes for educational purposes and authorized security training.',
     },
