@@ -479,7 +479,7 @@ function Hero() {
             h(
                 'p',
                 { className: 'hero-sub' },
-                'Penn State graduate, PNC Development Program Associate, Security Professional. I build things and break things... on purpose.'
+                'Penn State graduate, PNC Development Program Associate, Security Professional. I build things... and break things... on purpose.'
             ),
             h(
                 'div',
@@ -677,7 +677,10 @@ function SkillCard({ item }) {
         null,
         h('div', {
             className: `skill-logo-wrap ${item.isCert ? 'cert-wrap' : ''}`,
-            style: item.bgColor ? { borderColor: `${item.bgColor}90`, backgroundColor: `${item.bgColor}2A` } : {}
+            style: {
+                borderColor: 'rgba(255, 192, 3, 0.9)',
+                backgroundColor: 'rgba(255, 192, 3, 0.12)'
+            }
         }, icon),
         h('h4', null, item.name),
         item.isCert && h('div', { className: 'cert-verify-badge' },
