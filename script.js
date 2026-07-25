@@ -276,7 +276,7 @@ function CyberCanvas() {
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             // 1. Digital Matrix Rain (subtle cybersecurity accent)
-            ctx.fillStyle = 'rgba(255, 221, 51, 0.85)';
+            ctx.fillStyle = 'rgba(255, 221, 51, 0.6)';
             ctx.font = '11px "JetBrains Mono", monospace';
             for (let i = 0; i < drops.length; i++) {
                 const char = chars[Math.floor(Math.random() * chars.length)];
