@@ -68,13 +68,13 @@ const SKILL_GROUPS = [
 const PROJECTS = [
     {
         title: 'shadowGen',
-        img: 'images/shadowGen.jfif',
+        img: 'images/shadowGen.png',
         href: 'https://github.com/ethan-snyder/shadowGen',
         description: 'A Python-based utility for generating Linux /etc/shadow format password hashes for educational purposes and authorized security training.',
     },
     {
         title: 'Caishen 财神',
-        img: 'images/mySite.png',
+        img: 'images/fu.png',
         href: 'https://github.com/ethan-snyder/portfolio',
         description: 'This project is to provide a single cohesive solution to aide in the investigation of securities & specifically stock equities. ',
         bgColor: '#DE2910',
@@ -272,7 +272,7 @@ function CyberCanvas() {
         let pings = [];
 
         const render = () => {
-            ctx.fillStyle = 'rgba(10, 10, 10, 0.22)';
+            ctx.fillStyle = 'rgba(10, 10, 10, 0.32)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             // 1. Digital Matrix Rain (subtle cybersecurity accent)
@@ -297,7 +297,7 @@ function CyberCanvas() {
                 if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
                 if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
 
-                ctx.fillStyle = 'rgba(255, 221, 51, 0.75)';
+                ctx.fillStyle = 'rgba(255, 221, 51, 1)';
                 ctx.beginPath();
                 ctx.arc(n.x, n.y, n.size, 0, Math.PI * 2);
                 ctx.fill();
@@ -306,7 +306,7 @@ function CyberCanvas() {
                     const n2 = nodes[j];
                     const dist = Math.hypot(n.x - n2.x, n.y - n2.y);
                     if (dist < 140) {
-                        ctx.strokeStyle = `rgba(255, 221, 51, ${0.4 + 0.4 * (1 - dist / 140)})`;
+                        ctx.strokeStyle = `rgba(255, 221, 51, ${0.55 + 0.45 * (1 - dist / 140)})`;
                         ctx.beginPath();
                         ctx.moveTo(n.x, n.y);
                         ctx.lineTo(n2.x, n2.y);
