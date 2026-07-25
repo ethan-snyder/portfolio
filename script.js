@@ -34,7 +34,7 @@ const SKILL_GROUPS = [
             {
                 name: 'Wireshark',
                 bgColor: '#1679A7',
-                svg: '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Wireshark</title><path d="M13.2 2c-3.4 3.6-4.8 7.6-4.1 12 -2.3.3-4.5 1.2-6.3 2.7a.5.5 0 00.3.9c2.5-.2 5-.1 7.3.7a.5.5 0 00.7-.6c-.1-.8 0-1.6.2-2.3 1.6 1.6 3.6 2.7 5.9 3a.5.5 0 00.6-.8c-1-1.8-1.6-3.9-1.5-6 .1-3.5-.8-6.7-3.1-9.6z"/><path d="M2.2 19.4c2.6-.9 5.4-.9 8 0a.6.6 0 11-.4 1.1c-2.4-.8-4.9-.8-7.3 0a.6.6 0 11-.3-1.1z"/><path d="M12.6 20.3c2.1-.6 4.4-.5 6.5.2a.6.6 0 11-.4 1.1c-1.9-.6-4-.7-5.8-.2a.6.6 0 11-.3-1.1z"/></svg>',
+                svg: '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Wireshark</title><path d="M2.95 0C1.33 0 0 1.32 0 2.95v18.1C0 22.68 1.32 24 2.95 24h18.1c1.62 0 2.95 -1.32 2.95 -2.95V2.95C23.99976 1.32 22.68 0 21.05 0zm0 1.09h18.1c1.04 0 1.85 0.818 1.85 1.86v14h-5.27c-0.335 -0.796 -2.57 -6.47 0.283 -10.9a0.516 0.517 0 0 0 -0.443 -0.794c-5.24 0.0827 -8.2 3.19 -9.74 6.21 -1.35 2.64 -1.63 4.91 -1.69 5.53H1.09v-14c0 -1.04 0.817 -1.86 1.85 -1.86zm13.6 5.24c-2.62 5.24 0.248 11.4 0.248 11.4a0.516 0.517 0 0 0 0.469 0.301h5.62v3.05c0 1.04 -0.817 1.86 -1.85 1.86h-18.1c-1.04 0 -1.85 -0.818 -1.85 -1.86v-3.05h5.39a0.516 0.517 0 0 0 0.514 -0.477s0.226 -2.8 1.66 -5.62c1.34 -2.62 3.67 -5.17 7.91 -5.57z"/></svg>',
             },
             {
                 name: 'Metasploit',
@@ -771,7 +771,7 @@ function About() {
                 ),
                 h(
                     'a',
-                    { href: 'files/Ethan%20Snyder%20Resume.pdf', className: 'resume-link' },
+                    { href: 'files/Ethan%20Snyder%20Resume.pdf', className: 'resume-link', target: '_blank', rel: 'noopener noreferrer' },
                     h('i', { className: 'fas fa-file-arrow-down' }),
                     'Download a copy of my resume'
                 )
