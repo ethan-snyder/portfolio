@@ -244,9 +244,30 @@ function CyberCanvas() {
         const ctx = canvas.getContext('2d');
         let animationFrameId;
 
+        // Katakana & Hanzi digital rain — ported from a reference DigitalRain
+        // component, re-themed to the site's amber/gold palette and JetBrains
+        // Mono. Columns alternate strictly between the two phrases, and each
+        // drop keeps its own random speed for a more organic, less uniform fall.
+        const KATAKANA_STRING = 'サイバーセキュリティ';
+        const HANZI_STRING = '毅范司耐地的网络安全';
+        const STREAMS = [KATAKANA_STRING, HANZI_STRING];
+        const RAIN_FONT_SIZE = 14;
+        const RAIN_SPEED_SCALE = 0.075; // tames the reference's raw speed to a gentle site-appropriate fall
+        let drops = [];
+
+        const buildDrops = () => {
+            const rainColumns = Math.ceil(canvas.width / RAIN_FONT_SIZE);
+            drops = Array.from({ length: rainColumns }, (_, i) => ({
+                y: Math.floor(Math.random() * -30),
+                text: STREAMS[i % STREAMS.length],
+                speed: (0.6 + Math.random() * 1.2) * RAIN_SPEED_SCALE,
+            }));
+        };
+
         const resize = () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
+            buildDrops();
         };
         resize();
         window.addEventListener('resize', resize);
@@ -261,11 +282,6 @@ function CyberCanvas() {
             size: Math.random() * 2 + 1,
         }));
 
-        // Binary digital rain drops
-        const chars = '01100101011010011000101110101';
-        const columns = Math.floor(canvas.width / 24);
-        const drops = Array.from({ length: columns }, () => Math.random() * -100);
-
         let angle = 0;
         let lastSweepMod = 0;
         let pingedThisSweep = new Set();
@@ -275,16 +291,41 @@ function CyberCanvas() {
             ctx.fillStyle = 'rgba(10, 10, 10, 0.32)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+            // Radar HUD geometry (computed up front so the rain pass can check against it)
+            const radarActive = canvas.width > 768;
+            const radarCx = canvas.width * 0.82;
+            const radarCy = canvas.height * 0.5;
+            const radarRadius = Math.min(canvas.width, canvas.height) * 0.28;
+
             // 1. Digital Matrix Rain (subtle cybersecurity accent)
-            ctx.fillStyle = 'rgba(255, 221, 51, 0.6)';
-            ctx.font = '11px "JetBrains Mono", monospace';
+            // Each column draws its whole phrase at once, stacked vertically,
+            // so the characters travel down together as a single readable string.
+            // Characters under the radar HUD circle render at half opacity so
+            // the sweep reads as being "in front of" the rain.
+            ctx.font = `${RAIN_FONT_SIZE}px "JetBrains Mono", monospace`;
+            ctx.textBaseline = 'top';
             for (let i = 0; i < drops.length; i++) {
-                const char = chars[Math.floor(Math.random() * chars.length)];
-                ctx.fillText(char, i * 24, drops[i]);
-                if (drops[i] > canvas.height && Math.random() > 0.975) {
-                    drops[i] = 0;
+                const drop = drops[i];
+                const x = i * RAIN_FONT_SIZE;
+                const y = drop.y * RAIN_FONT_SIZE;
+                const chars = Array.from(drop.text);
+                // A column is dimmed for its entire length if it's anywhere along
+                // the radar circle's horizontal span, not just while a character
+                // happens to sit inside the circle — avoids a jarring color pop
+                // as characters cross the circle's edge.
+                const underRadar = radarActive && Math.abs(x - radarCx) <= radarRadius;
+                const alpha = underRadar ? 0.325 * 0.5 : 0.325;
+                ctx.fillStyle = `rgba(255, 221, 51, ${alpha})`;
+                for (let j = 0; j < chars.length; j++) {
+                    const yy = y + j * RAIN_FONT_SIZE;
+                    if (yy < -RAIN_FONT_SIZE || yy > canvas.height) continue;
+                    ctx.fillText(chars[j], x, yy);
                 }
-                drops[i] += 12;
+                drop.y += drop.speed;
+                if (drop.y * RAIN_FONT_SIZE > canvas.height + drop.text.length * RAIN_FONT_SIZE) {
+                    drop.y = Math.floor(Math.random() * -30);
+                    drop.speed = (0.6 + Math.random() * 1.2) * RAIN_SPEED_SCALE;
+                }
             }
 
             // 2. Animated Cybersecurity Grid Nodes & Connections
@@ -316,11 +357,11 @@ function CyberCanvas() {
             }
 
             // 3. Cyber Security Radar Sweep (Right HUD Element)
-            const cx = canvas.width * 0.82;
-            const cy = canvas.height * 0.5;
-            const radius = Math.min(canvas.width, canvas.height) * 0.28;
+            const cx = radarCx;
+            const cy = radarCy;
+            const radius = radarRadius;
 
-            if (canvas.width > 768) {
+            if (radarActive) {
                 angle += 0.012;
                 const sweepMod = angle % (Math.PI * 2);
 
