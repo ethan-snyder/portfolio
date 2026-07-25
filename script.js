@@ -76,7 +76,7 @@ const PROJECTS = [
         title: 'Caishen 财神',
         img: 'images/mySite.png',
         href: 'https://github.com/ethan-snyder/portfolio',
-        description: 'This portfolio website was a great way to practice web development while implementing a sleek user interface.',
+        description: 'This project is to provide a single cohesive solution to aide in the investigation of securities & specifically stock equities. ',
         bgColor: '#DE2910',
     },
     {
