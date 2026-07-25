@@ -68,15 +68,16 @@ const SKILL_GROUPS = [
 const PROJECTS = [
     {
         title: 'shadowGen',
-        img: 'images/shadowGen.png',
+        img: 'images/shadowGen.jfif',
         href: 'https://github.com/ethan-snyder/shadowGen',
         description: 'A Python-based utility for generating Linux /etc/shadow format password hashes for educational purposes and authorized security training.',
     },
     {
         title: 'Caishen 财神',
-        img: 'images/fu.png',
+        img: 'images/mySite.png',
         href: 'https://github.com/ethan-snyder/portfolio',
         description: 'This portfolio website was a great way to practice web development while implementing a sleek user interface.',
+        bgColor: '#DE2910',
     },
     {
         title: 'Web Storefront Team Project',
@@ -266,13 +267,16 @@ function CyberCanvas() {
         const drops = Array.from({ length: columns }, () => Math.random() * -100);
 
         let angle = 0;
+        let lastSweepMod = 0;
+        let pingedThisSweep = new Set();
+        let pings = [];
 
         const render = () => {
             ctx.fillStyle = 'rgba(10, 10, 10, 0.22)';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             // 1. Digital Matrix Rain (subtle cybersecurity accent)
-            ctx.fillStyle = 'rgba(255, 192, 3, 0.12)';
+            ctx.fillStyle = 'rgba(255, 221, 51, 0.85)';
             ctx.font = '11px "JetBrains Mono", monospace';
             for (let i = 0; i < drops.length; i++) {
                 const char = chars[Math.floor(Math.random() * chars.length)];
@@ -284,7 +288,7 @@ function CyberCanvas() {
             }
 
             // 2. Animated Cybersecurity Grid Nodes & Connections
-            ctx.lineWidth = 0.8;
+            ctx.lineWidth = 1;
             for (let i = 0; i < nodes.length; i++) {
                 const n = nodes[i];
                 n.x += n.vx;
@@ -293,7 +297,7 @@ function CyberCanvas() {
                 if (n.x < 0 || n.x > canvas.width) n.vx *= -1;
                 if (n.y < 0 || n.y > canvas.height) n.vy *= -1;
 
-                ctx.fillStyle = 'rgba(255, 192, 3, 0.5)';
+                ctx.fillStyle = 'rgba(255, 221, 51, 0.75)';
                 ctx.beginPath();
                 ctx.arc(n.x, n.y, n.size, 0, Math.PI * 2);
                 ctx.fill();
@@ -302,7 +306,7 @@ function CyberCanvas() {
                     const n2 = nodes[j];
                     const dist = Math.hypot(n.x - n2.x, n.y - n2.y);
                     if (dist < 140) {
-                        ctx.strokeStyle = `rgba(255, 192, 3, ${0.15 * (1 - dist / 140)})`;
+                        ctx.strokeStyle = `rgba(255, 221, 51, ${0.4 + 0.4 * (1 - dist / 140)})`;
                         ctx.beginPath();
                         ctx.moveTo(n.x, n.y);
                         ctx.lineTo(n2.x, n2.y);
@@ -318,16 +322,40 @@ function CyberCanvas() {
 
             if (canvas.width > 768) {
                 angle += 0.012;
+                const sweepMod = angle % (Math.PI * 2);
+
+                // Detect nodes the sweep line passes over ("contacts") and spawn a ping
+                for (let i = 0; i < nodes.length; i++) {
+                    const n = nodes[i];
+                    const dx = n.x - cx;
+                    const dy = n.y - cy;
+                    const dist = Math.hypot(dx, dy);
+                    if (dist > radius) continue;
+
+                    let nodeAngle = Math.atan2(dy, dx);
+                    if (nodeAngle < 0) nodeAngle += Math.PI * 2;
+
+                    const diff = Math.min(Math.abs(sweepMod - nodeAngle), Math.PI * 2 - Math.abs(sweepMod - nodeAngle));
+                    if (diff < 0.03 && !pingedThisSweep.has(i)) {
+                        pings.push({ x: n.x, y: n.y, start: performance.now() });
+                        pingedThisSweep.add(i);
+                    }
+                }
+                if (sweepMod < lastSweepMod) {
+                    pingedThisSweep.clear();
+                }
+                lastSweepMod = sweepMod;
+
                 ctx.save();
                 ctx.translate(cx, cy);
 
                 // Rings
-                ctx.strokeStyle = 'rgba(255, 192, 3, 0.08)';
+                ctx.strokeStyle = 'rgba(255, 221, 51, 0.5)';
                 ctx.beginPath(); ctx.arc(0, 0, radius, 0, Math.PI * 2); ctx.stroke();
                 ctx.beginPath(); ctx.arc(0, 0, radius * 0.6, 0, Math.PI * 2); ctx.stroke();
 
                 // Crosshairs
-                ctx.strokeStyle = 'rgba(255, 192, 3, 0.05)';
+                ctx.strokeStyle = 'rgba(255, 221, 51, 0.35)';
                 ctx.beginPath(); ctx.moveTo(-radius, 0); ctx.lineTo(radius, 0); ctx.stroke();
                 ctx.beginPath(); ctx.moveTo(0, -radius); ctx.lineTo(0, radius); ctx.stroke();
 
@@ -335,10 +363,30 @@ function CyberCanvas() {
                 ctx.beginPath();
                 ctx.moveTo(0, 0);
                 ctx.arc(0, 0, radius, angle, angle + 0.45);
-                ctx.fillStyle = 'rgba(255, 192, 3, 0.04)';
+                ctx.fillStyle = 'rgba(255, 221, 51, 0.30)';
                 ctx.fill();
 
                 ctx.restore();
+
+                // "Contact found" pings — expanding rings at each detected node
+                const now = performance.now();
+                pings = pings.filter((p) => now - p.start < 900);
+                pings.forEach((p) => {
+                    const t = (now - p.start) / 900;
+                    const ringRadius = 4 + t * 24;
+                    const ringAlpha = (1 - t) * 0.9;
+
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, ringRadius, 0, Math.PI * 2);
+                    ctx.strokeStyle = `rgba(255, 221, 51, ${ringAlpha})`;
+                    ctx.lineWidth = 1.5;
+                    ctx.stroke();
+
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, 3, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(255, 221, 51, ${Math.min(1, (1 - t) * 1.3)})`;
+                    ctx.fill();
+                });
             }
 
             animationFrameId = requestAnimationFrame(render);
@@ -392,7 +440,7 @@ function Reveal({ tag = 'div', className = '', children }) {
 function Header() {
     const [sticky, setSticky] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
-    const [activeSection, setActiveSection] = useState('#main');
+    const [activeHref, setActiveHref] = useState('#main');
 
     useEffect(() => {
         const onScroll = () => setSticky(window.scrollY > 10);
@@ -404,13 +452,13 @@ function Header() {
         const sections = NAV_LINKS
             .map((link) => document.querySelector(link.href))
             .filter(Boolean);
-        if (!sections.length) return;
+        if (sections.length === 0) return;
 
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
-                        setActiveSection(`#${entry.target.id}`);
+                        setActiveHref(`#${entry.target.id}`);
                     }
                 });
             },
@@ -449,7 +497,7 @@ function Header() {
                     {
                         key: link.href,
                         href: link.href,
-                        className: `nav-link ${activeSection === link.href ? 'active' : ''}`,
+                        className: `nav-link ${activeHref === link.href ? 'active' : ''}`,
                         onClick: () => setMenuOpen(false),
                     },
                     h('span', { className: 'num' }, link.num),
@@ -797,7 +845,7 @@ function ExperienceItem({ job }) {
                 h('span', { className: 'experience-company' }, job.company, ' \u00B7 ', job.type),
                 h('span', { className: 'experience-location' }, job.location)
             ),
-            job.bullets && job.bullets.length > 0 && h(
+            job.bullets.length > 0 && h(
                 'ul',
                 { className: 'experience-bullets' },
                 job.bullets.map((b, i) => h('li', { key: i }, b))
@@ -807,14 +855,14 @@ function ExperienceItem({ job }) {
                 { className: 'experience-rotations' },
                 job.rotations.map((rot) => h(
                     'div',
-                    { className: 'experience-rotation', key: rot.title },
+                    { key: rot.title, className: 'experience-rotation' },
                     h(
                         'div',
                         { className: 'experience-rotation-top' },
                         h('h5', null, rot.title),
                         h('span', { className: 'experience-rotation-dates' }, rot.dates)
                     ),
-                    h(
+                    rot.bullets.length > 0 && h(
                         'ul',
                         { className: 'experience-bullets' },
                         rot.bullets.map((b, i) => h('li', { key: i }, b))
@@ -839,25 +887,13 @@ function Experience() {
 }
 
 function ProjectCard({ project }) {
-    const { ref, style, tilting, onMouseMove, onMouseEnter, onMouseLeave } = useTilt(4);
     return h(
-        'a',
-        {
-            ref,
-            href: project.href,
-            target: '_blank',
-            rel: 'noopener noreferrer',
-            className: `project-card ${tilting ? 'tilting' : ''}`,
-            style,
-            onMouseMove,
-            onMouseEnter,
-            onMouseLeave,
-        },
+        TiltCard,
+        { as: 'a', href: project.href, className: 'project-card', maxTilt: 6, target: '_blank', rel: 'noopener noreferrer' },
         h(
             'div',
-            { className: 'project-img-wrap' },
-            h('img', { src: project.img, alt: project.title }),
-            h('span', { className: 'project-img-glare', 'aria-hidden': 'true' })
+            { className: 'project-img-wrap', style: project.bgColor ? { background: project.bgColor } : undefined },
+            h('img', { src: project.img, alt: project.title })
         ),
         h(
             'div',

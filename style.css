@@ -85,8 +85,8 @@ h1, h2, h3, h4 {
     position: absolute;
     inset: 0;
     background-image:
-            linear-gradient(rgba(255, 192, 3, 0.045) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 192, 3, 0.045) 1px, transparent 1px);
+            linear-gradient(rgba(255, 192, 3, 0.20) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 192, 3, 0.20) 1px, transparent 1px);
     background-size: 44px 44px;
     pointer-events: none;
     z-index: 0;
@@ -196,13 +196,13 @@ header.sticky {
 }
 
 .nav-link.active {
-    color: #0a0a0a;
+    color: var(--ink);
     background: var(--yellow);
 }
 
 .nav-link.active .num {
-    color: #0a0a0a;
-    opacity: 0.75;
+    color: var(--ink);
+    opacity: 1;
 }
 
 .menu-btn {
@@ -474,6 +474,12 @@ header.sticky {
 .tilt-card:hover .tilt-card__glare,
 .tilt-card.tilting .tilt-card__glare {
     opacity: 1;
+}
+
+/* Project tiles: keep the 3D tilt, but disable the spotlight/glare hover effect */
+.project-card.tilt-card:hover .tilt-card__glare,
+.project-card.tilt-card.tilting .tilt-card__glare {
+    opacity: 0;
 }
 
 .tilt-card__rivet {
@@ -748,7 +754,9 @@ header.sticky {
     transform: translateY(-2px);
 }
 
-@property --flag-angle {
+/* Registers --ring-angle as an animatable angle so the conic-gradient
+   colors can travel around the ring without rotating the ring/border itself */
+@property --ring-angle {
     syntax: '<angle>';
     inherits: false;
     initial-value: 0deg;
@@ -759,7 +767,7 @@ header.sticky {
     inset: -2px;
     border-radius: inherit;
     padding: 2px;
-    background: conic-gradient(from var(--flag-angle), var(--flag-colors));
+    background: conic-gradient(from var(--ring-angle), var(--flag-colors));
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
@@ -770,7 +778,7 @@ header.sticky {
 
 .travel-chip:hover .travel-chip__ring {
     opacity: 1;
-    animation: flagSpin 5s linear infinite;
+    animation: flagSpin 3s linear infinite;
 }
 
 .travel-chip__label {
@@ -779,8 +787,8 @@ header.sticky {
 }
 
 @keyframes flagSpin {
-    from { --flag-angle: 0deg; }
-    to { --flag-angle: 360deg; }
+    from { --ring-angle: 0deg; }
+    to { --ring-angle: 360deg; }
 }
 
 @keyframes flagPop {
@@ -1167,12 +1175,12 @@ header.sticky {
 }
 
 .experience-rotations {
-    margin-top: 10px;
+    margin-top: 16px;
     padding-left: 20px;
-    border-left: 2px solid var(--line);
+    border-left: 2px solid rgba(255, 192, 3, 0.3);
     display: flex;
     flex-direction: column;
-    gap: 22px;
+    gap: 20px;
 }
 
 .experience-rotation {
@@ -1182,7 +1190,7 @@ header.sticky {
 .experience-rotation::before {
     content: '';
     position: absolute;
-    left: -25px;
+    left: -24px;
     top: 6px;
     width: 8px;
     height: 8px;
@@ -1196,16 +1204,16 @@ header.sticky {
     justify-content: space-between;
     align-items: baseline;
     flex-wrap: wrap;
-    gap: 6px 14px;
-    margin-bottom: 8px;
+    gap: 6px 16px;
+    margin-bottom: 6px;
 }
 
 .experience-rotation-top h5 {
     font-family: var(--font-mono);
-    font-size: 0.82rem;
-    letter-spacing: 0.02em;
+    font-size: 0.85rem;
+    letter-spacing: 0.03em;
     color: var(--text);
-    font-weight: 600;
+    text-transform: uppercase;
 }
 
 .experience-rotation-dates {
@@ -1214,6 +1222,14 @@ header.sticky {
     color: var(--yellow);
     opacity: 0.85;
     white-space: nowrap;
+}
+
+.experience-rotation .experience-bullets {
+    max-width: 64ch;
+}
+
+.experience-rotation .experience-bullets li {
+    font-size: 0.85rem;
 }
 
 .projects-subheading h3 {
@@ -1247,26 +1263,13 @@ header.sticky {
 .project-track::-webkit-scrollbar { display: none; }
 
 .project-card {
-    position: relative;
-    display: block;
     scroll-snap-align: start;
     flex: 0 0 340px;
     background: var(--panel-alt);
     border: 1px solid var(--line);
-    border-radius: var(--radius);
-    overflow: hidden;
-    transform: perspective(900px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1);
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.35s ease;
-    will-change: transform;
-}
-
-.project-card:hover,
-.project-card.tilting {
-    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.45);
 }
 
 .project-img-wrap {
-    position: relative;
     width: 100%;
     aspect-ratio: 16 / 10;
     overflow: hidden;
@@ -1277,26 +1280,11 @@ header.sticky {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.5s ease;
 }
 
-.project-card:hover .project-img-wrap img,
-.project-card.tilting .project-img-wrap img {
-    transform: scale(1.08);
-}
-
-.project-img-glare {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(255, 255, 255, 0.16), transparent 55%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-}
-
-.project-card:hover .project-img-glare,
-.project-card.tilting .project-img-glare {
-    opacity: 1;
+.tilt-card:hover .project-img-wrap img {
+    transform: scale(1.06);
 }
 
 .project-body {
@@ -1318,8 +1306,7 @@ header.sticky {
     transition: transform 0.25s ease;
 }
 
-.project-card:hover .proj-title i,
-.project-card.tilting .proj-title i {
+.tilt-card:hover .proj-title i {
     transform: translate(3px, -3px);
 }
 
