@@ -253,11 +253,18 @@ function CyberCanvas() {
         const STREAMS = [KATAKANA_STRING, HANZI_STRING];
         const RAIN_FONT_SIZE = 14;
         const RAIN_SPEED_SCALE = 0.075; // tames the reference's raw speed to a gentle site-appropriate fall
+        const RAIN_DENSITY = 0.75; // 25% fewer drops than one-per-column, for perf + a less cluttered look
         let drops = [];
 
         const buildDrops = () => {
-            const rainColumns = Math.ceil(canvas.width / RAIN_FONT_SIZE);
+            const maxColumns = Math.ceil(canvas.width / RAIN_FONT_SIZE);
+            const rainColumns = Math.max(1, Math.round(maxColumns * RAIN_DENSITY));
+            // Spread the reduced drop count evenly across the full canvas width
+            // (rather than just dropping every 4th column) so the thinning reads
+            // as intentional, uniform spacing instead of gaps on one side.
+            const colSpacing = canvas.width / rainColumns;
             drops = Array.from({ length: rainColumns }, (_, i) => ({
+                x: Math.round(i * colSpacing),
                 y: Math.floor(Math.random() * -30),
                 text: STREAMS[i % STREAMS.length],
                 speed: (0.6 + Math.random() * 1.2) * RAIN_SPEED_SCALE,
@@ -306,7 +313,7 @@ function CyberCanvas() {
             ctx.textBaseline = 'top';
             for (let i = 0; i < drops.length; i++) {
                 const drop = drops[i];
-                const x = i * RAIN_FONT_SIZE;
+                const x = drop.x;
                 const y = drop.y * RAIN_FONT_SIZE;
                 const chars = Array.from(drop.text);
                 // A column is dimmed for its entire length if it's anywhere along
