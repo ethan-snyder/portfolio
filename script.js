@@ -20,34 +20,34 @@ const SKILL_GROUPS = [
         title: 'Coding',
         items: [
             { name: 'HTML', img: 'https://www.svgrepo.com/show/17134/html-file-with-code-symbol.svg', bgColor: '#E34F26' },
-            { name: 'CSS', img: 'https://www.svgrepo.com/show/170099/css-file-format-symbol.svg', bgColor: '#1572B6' },
-            { name: 'JavaScript', img: 'https://www.svgrepo.com/show/512400/javascript-155.svg', bgColor: '#F7DF1E' },
+            { name: 'JavaScript', img: 'https://www.svgrepo.com/show/512400/javascript-155.svg', bgColor: '#F0DB4F' },
+            { name: 'MySQL', img: 'https://www.svgrepo.com/show/342053/mysql.svg', bgColor: '#00758F' },
             { name: 'Java', img: 'https://www.svgrepo.com/show/30521/java.svg', bgColor: '#007396' },
-            { name: 'Python', img: 'https://www.svgrepo.com/show/368903/python.svg', bgColor: '#3776AB' },
-            { name: 'MySQL', img: 'https://www.svgrepo.com/show/342053/mysql.svg', bgColor: '#4479A1' },
+            { name: 'Python', img: 'https://www.svgrepo.com/show/368903/python.svg', bgColor: '#306998' },
+            { name: 'CSS', img: 'https://www.svgrepo.com/show/170099/css-file-format-symbol.svg', bgColor: '#264DE4' },
         ],
     },
     {
         title: 'Tools',
         items: [
-            { name: 'Docker', img: 'https://www.svgrepo.com/show/448401/docker.svg', bgColor: '#2496ED' },
+            { name: 'OWASP ZAP', img: 'images/png-clipart-owasp-zap-vulnerability-penetration-test-proxy-server-web-application-miscellaneous-angle.png', bgColor: '#C02027' },
+            {
+                name: 'Burp Suite',
+                bgColor: '#FF6633',
+                svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"><path d="M 8 4 C 5.800781 4 4 5.800781 4 8 L 4 42 C 4 44.199219 5.800781 46 8 46 L 42 46 C 44.199219 46 46 44.199219 46 42 L 46 8 C 46 5.800781 44.199219 4 42 4 Z M 8 6 L 24 6 L 24 9.585938 L 12.585938 21 L 24 21 L 24 30 L 32.585938 30 L 24 38.585938 L 24 44 L 8 44 C 6.882813 44 6 43.117188 6 42 L 6 8 C 6 6.882813 6.882813 6 8 6 Z M 26 6 L 42 6 C 43.117188 6 44 6.882813 44 8 L 44 42 C 44 43.117188 43.117188 44 42 44 L 26 44 L 26 39.414063 L 37.414063 28 L 26 28 L 26 19 L 17.414063 L 19 L 26 10.414063 Z"/></svg>',
+            },
+            {
+                name: 'Metasploit',
+                bgColor: '#2EBD85',
+                svg: '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Metasploit</title><path d="M11.353 0h1.368q4.19 0.218 8.144 1.616 0.217 0.077 0.216 0.309 -0.015 4.033 -0.002 12.102 0 0.81 -0.093 1.173c-0.217 0.845 -0.76 1.635 -1.326 2.325q-0.318 0.388 -1.024 1.046 -2.955 2.75 -6.01 5.094 -0.183 0.14 -0.516 0.335h-0.17q-0.627 -0.42 -0.945 -0.673 -3.992 -3.184 -5.442 -4.459 -1.348 -1.185 -2.169 -2.611c-0.369 -0.64 -0.466 -1.287 -0.465 -2.099q0.01 -6.048 0.002 -12.218c0 -0.183 0.09 -0.264 0.261 -0.325Q7.145 0.227 11.352 0ZM7.474 7.864q0 -0.094 0.069 -0.031l2.797 2.516a0.374 0.372 21.2 0 1 0.122 0.276l-0.006 4.333a0.182 0.182 0 0 0 0.183 0.184l2.524 -0.018a0.11 0.11 89.8 0 0 0.108 -0.11q-0.007 -2.201 0.01 -4.461 0.002 -0.173 0.146 -0.29 1.397 -1.145 2.946 -2.393 0.068 -0.055 0.068 0.032v10.881q0 0.092 0.063 0.024 0.794 -0.865 1.628 -1.838 0.71 -0.83 0.984 -1.87 0.26 -0.989 0.262 -1.997 0.007 -4.754 0.009 -9.768a0.136 0.136 0 0 0 -0.137 -0.136q-1.15 0.004 -2.424 0c-0.287 -0.002 -0.441 -0.022 -0.619 0.149Q14.16 5.317 11.982 7.4a0.046 0.046 0 0 1 -0.062 0Q9.782 5.437 7.769 3.525c-0.234 -0.222 -0.515 -0.381 -0.843 -0.373q-1.09 0.026 -2.33 0.005 -0.184 -0.004 -0.184 0.18 -0.003 4.54 0.005 9.032 0.002 0.536 0.036 1.027c0.076 1.093 0.2 2.126 0.803 3.021 0.574 0.852 1.329 1.656 2.126 2.405q0.023 0.022 0.054 0.026 0.04 0.006 0.04 -0.034z"/></svg>',
+            },
+            { name: 'Docker', img: 'https://www.svgrepo.com/show/448401/docker.svg', bgColor: '#0DB7ED' },
             {
                 name: 'Wireshark',
                 bgColor: '#1679A7',
                 svg: '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Wireshark</title><path d="M2.95 0C1.33 0 0 1.32 0 2.95v18.1C0 22.68 1.32 24 2.95 24h18.1c1.62 0 2.95 -1.32 2.95 -2.95V2.95C23.99976 1.32 22.68 0 21.05 0zm0 1.09h18.1c1.04 0 1.85 0.818 1.85 1.86v14h-5.27c-0.335 -0.796 -2.57 -6.47 0.283 -10.9a0.516 0.517 0 0 0 -0.443 -0.794c-5.24 0.0827 -8.2 3.19 -9.74 6.21 -1.35 2.64 -1.63 4.91 -1.69 5.53H1.09v-14c0 -1.04 0.817 -1.86 1.85 -1.86zm13.6 5.24c-2.62 5.24 0.248 11.4 0.248 11.4a0.516 0.517 0 0 0 0.469 0.301h5.62v3.05c0 1.04 -0.817 1.86 -1.85 1.86h-18.1c-1.04 0 -1.85 -0.818 -1.85 -1.86v-3.05h5.39a0.516 0.517 0 0 0 0.514 -0.477s0.226 -2.8 1.66 -5.62c1.34 -2.62 3.67 -5.17 7.91 -5.57z"/></svg>',
             },
-            {
-                name: 'Metasploit',
-                bgColor: '#2A6496',
-                svg: '<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Metasploit</title><path d="M11.353 0h1.368q4.19 0.218 8.144 1.616 0.217 0.077 0.216 0.309 -0.015 4.033 -0.002 12.102 0 0.81 -0.093 1.173c-0.217 0.845 -0.76 1.635 -1.326 2.325q-0.318 0.388 -1.024 1.046 -2.955 2.75 -6.01 5.094 -0.183 0.14 -0.516 0.335h-0.17q-0.627 -0.42 -0.945 -0.673 -3.992 -3.184 -5.442 -4.459 -1.348 -1.185 -2.169 -2.611c-0.369 -0.64 -0.466 -1.287 -0.465 -2.099q0.01 -6.048 0.002 -12.218c0 -0.183 0.09 -0.264 0.261 -0.325Q7.145 0.227 11.352 0ZM7.474 7.864q0 -0.094 0.069 -0.031l2.797 2.516a0.374 0.372 21.2 0 1 0.122 0.276l-0.006 4.333a0.182 0.182 0 0 0 0.183 0.184l2.524 -0.018a0.11 0.11 89.8 0 0 0.108 -0.11q-0.007 -2.201 0.01 -4.461 0.002 -0.173 0.146 -0.29 1.397 -1.145 2.946 -2.393 0.068 -0.055 0.068 0.032v10.881q0 0.092 0.063 0.024 0.794 -0.865 1.628 -1.838 0.71 -0.83 0.984 -1.87 0.26 -0.989 0.262 -1.997 0.007 -4.754 0.009 -9.768a0.136 0.136 0 0 0 -0.137 -0.136q-1.15 0.004 -2.424 0c-0.287 -0.002 -0.441 -0.022 -0.619 0.149Q14.16 5.317 11.982 7.4a0.046 0.046 0 0 1 -0.062 0Q9.782 5.437 7.769 3.525c-0.234 -0.222 -0.515 -0.381 -0.843 -0.373q-1.09 0.026 -2.33 0.005 -0.184 -0.004 -0.184 0.18 -0.003 4.54 0.005 9.032 0.002 0.536 0.036 1.027c0.076 1.093 0.2 2.126 0.803 3.021 0.574 0.852 1.329 1.656 2.126 2.405q0.023 0.022 0.054 0.026 0.04 0.006 0.04 -0.034z"/></svg>',
-            },
-            {
-                name: 'Burp Suite',
-                bgColor: '#FF6600',
-                svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"><path d="M 8 4 C 5.800781 4 4 5.800781 4 8 L 4 42 C 4 44.199219 5.800781 46 8 46 L 42 46 C 44.199219 46 46 44.199219 46 42 L 46 8 C 46 5.800781 44.199219 4 42 4 Z M 8 6 L 24 6 L 24 9.585938 L 12.585938 21 L 24 21 L 24 30 L 32.585938 30 L 24 38.585938 L 24 44 L 8 44 C 6.882813 44 6 43.117188 6 42 L 6 8 C 6 6.882813 6.882813 6 8 6 Z M 26 6 L 42 6 C 43.117188 6 44 6.882813 44 8 L 44 42 C 44 43.117188 43.117188 44 42 44 L 26 44 L 26 39.414063 L 37.414063 28 L 26 28 L 26 19 L 17.414063 L 19 L 26 10.414063 Z"/></svg>',
-            },
-            { name: 'Kali Linux', img: 'https://www.svgrepo.com/show/330767/kalilinux.svg', bgColor: '#557C93' },
-            { name: 'OWASP ZAP', img: 'images/png-clipart-owasp-zap-vulnerability-penetration-test-proxy-server-web-application-miscellaneous-angle.png', bgColor: '#005EA6' },
+            { name: 'Kali Linux', img: 'https://www.svgrepo.com/show/330767/kalilinux.svg', bgColor: '#2B72BB' },
         ],
     },
     {
@@ -455,14 +455,14 @@ function CyberCanvas() {
    SHARED COMPONENTS
    ============================================================ */
 
-function TiltCard({ as = 'div', className = '', maxTilt = 8, children, ...rest }) {
+function TiltCard({ as = 'div', className = '', maxTilt = 8, children, style: styleProp, ...rest }) {
     const { ref, style, tilting, onMouseMove, onMouseEnter, onMouseLeave } = useTilt(maxTilt);
     return h(
         as,
         {
             ref,
             className: `tilt-card ${tilting ? 'tilting' : ''} ${className}`,
-            style,
+            style: { ...styleProp, ...style },
             onMouseMove,
             onMouseEnter,
             onMouseLeave,
@@ -798,6 +798,22 @@ function About() {
    SKILLS
    ============================================================ */
 
+/* Blends a brand hex color into a near-black base so skill card
+   backgrounds read as "dark, tinted with the brand color" rather than
+   full-saturation pastel. Border keeps the pure brand color; background
+   gets a light (~14%) mix of it into the site's dark panel tone. */
+function darkenBrandColor(hex, mixRatio = 0.14) {
+    const clean = hex.replace('#', '');
+    const r = parseInt(clean.substring(0, 2), 16);
+    const g = parseInt(clean.substring(2, 4), 16);
+    const b = parseInt(clean.substring(4, 6), 16);
+    const base = 13; // close to the site's --panel-alt (#1c1c1c) / --bg tone
+    const mr = Math.round(r * mixRatio + base * (1 - mixRatio));
+    const mg = Math.round(g * mixRatio + base * (1 - mixRatio));
+    const mb = Math.round(b * mixRatio + base * (1 - mixRatio));
+    return `rgb(${mr}, ${mg}, ${mb})`;
+}
+
 function SkillCard({ item }) {
     const icon = item.svg
         ? h('div', {
@@ -814,8 +830,8 @@ function SkillCard({ item }) {
         h('div', {
             className: `skill-logo-wrap ${item.isCert ? 'cert-wrap' : ''}`,
             style: {
-                borderColor: 'rgba(255, 192, 3, 0.9)',
-                backgroundColor: 'rgba(255, 192, 3, 0.12)'
+                borderColor: '#ffffff',
+                backgroundColor: 'rgba(255, 255, 255, 0.18)'
             }
         }, icon),
         h('h4', null, item.name),
@@ -833,7 +849,10 @@ function SkillCard({ item }) {
             className: `skill-card ${item.isCert ? 'cert-skill-card' : ''}`,
             maxTilt: 12,
             target: item.href ? '_blank' : undefined,
-            rel: item.href ? 'noopener noreferrer' : undefined
+            rel: item.href ? 'noopener noreferrer' : undefined,
+            style: item.bgColor
+                ? { borderColor: item.bgColor, backgroundColor: darkenBrandColor(item.bgColor) }
+                : undefined,
         },
         inner
     );

@@ -1267,6 +1267,7 @@ header.sticky {
     flex: 0 0 340px;
     background: var(--panel-alt);
     border: 1px solid var(--line);
+    overflow: hidden;
 }
 
 .project-img-wrap {
@@ -1274,17 +1275,21 @@ header.sticky {
     aspect-ratio: 16 / 10;
     overflow: hidden;
     background: #0e0e0e;
+    border-radius: inherit;
+    /* Forces this element onto its own compositing layer so overflow:hidden
+       reliably clips its contents. Needed because .tilt-card (an ancestor)
+       sets transform-style: preserve-3d for the tilt effect, and Safari/
+       WebKit has a long-standing bug where overflow:hidden fails to clip
+       descendants inside a 3D rendering context without this. */
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
 }
 
 .project-img-wrap img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
-}
-
-.tilt-card:hover .project-img-wrap img {
-    transform: scale(1.06);
+    display: block;
 }
 
 .project-body {
